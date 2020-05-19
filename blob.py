@@ -2,14 +2,14 @@ import os, uuid
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 
 try:
-    print("Azure Blob storage v12 - Python quickstart sample")
+    # print("Azure Blob storage v12 - Python quickstart sample")
     connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
-    print(connect_str)
+    # print(connect_str)
     # Create the BlobServiceClient object which will be used to create a container client
     blob_service_client = BlobServiceClient.from_connection_string(connect_str)
 
     # Create a unique name for the container
-    container_name = "msftdataset" 
+    container_name = "datasetcontainer" 
 
     # Create the container
     # container_client = blob_service_client.create_container(container_name)
@@ -22,13 +22,14 @@ try:
 # Create a blob client using the local file name as the name for the blob
     blob_client = blob_service_client.get_blob_client(container=container_name, blob=local_file_name)
      # Instantiate a ContainerClient
-    container_client = blob_service_client.get_container_client("msftdataset")
-    container_client.delete_blobs("ds.csv")
+    container_client = blob_service_client.get_container_client("datasetcontainer")
+    container_client.delete_blob("ds.csv")
+
     print("\nDeleting blob from Azure Storage:\n\t" + local_file_name)
 
     print("\n\n Now, uploading to Azure Storage as blob:\n\t" + local_file_name)
   
-# Upload the created file
+# Upload the created /file
     with open(upload_file_path, "rb") as data:
         blob_client.upload_blob(data)
   
