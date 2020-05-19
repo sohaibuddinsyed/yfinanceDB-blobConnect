@@ -14,7 +14,7 @@ try:
     # Create the container
     # container_client = blob_service_client.create_container(container_name)
     # Create a file in local data directory to upload and download
-    local_path = "./data"
+    local_path = "./"
     local_file_name = "ds.csv"
     upload_file_path = os.path.join(local_path, local_file_name)
 
